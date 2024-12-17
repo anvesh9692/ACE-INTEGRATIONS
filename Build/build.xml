@@ -26,10 +26,10 @@
 	 <exec executable="${iib_home}/ace.cmd" dir="${workspace_dir}/Build/" output="No" error="No" >
 		<arg line="Batch_Bar_Version_Updater.bat" />
 	 </exec>
-	<copy file="${workspace_dir}/Bars/DEV/${bar_name}" todir="${workspace_dir}/Bars/SIT"/>
+	<!--<copy file="${workspace_dir}/Bars/DEV/${bar_name}" todir="${workspace_dir}/Bars/SIT"/>
 	<copy file="${workspace_dir}/Bars/DEV/${bar_name}" todir="${workspace_dir}/Bars/UAT"/>
 	<copy file="${workspace_dir}/Bars/DEV/${bar_name}" todir="${workspace_dir}/Bars/PERF"/>
-	<copy file="${workspace_dir}/Bars/DEV/${bar_name}" todir="${workspace_dir}/Bars/PROD"/>
+	<copy file="${workspace_dir}/Bars/DEV/${bar_name}" todir="${workspace_dir}/Bars/PROD"/>-->
 	<echo message="Bar files created sucessfully @ ${workspace_dir}/Bars/" />
   </target>
   
