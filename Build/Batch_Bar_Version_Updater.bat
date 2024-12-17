@@ -1,10 +1,10 @@
 @echo off
-::set LOGFILE=D:\Work\ACE12\batch.log
+::set LOGFILE=C:\Anvesh\Work\ACE12\batch.log
 ::call :LOG > %LOGFILE%
 ::exit /B
 
 ::LOG
-set FILE_PATH=C:\ProgramData\Jenkins\.jenkins\workspace\ACE_Deployments\Build\build.properties
+set FILE_PATH=C:\Users\bollimpalli\AppData\Local\Jenkins\.jenkins\workspace\ACE_Deployments\Build\build.properties
 
 for /f "usebackq tokens=1,2 delims==" %%A in ("%FILE_PATH%") do (
     if "%%A"=="application_name" (

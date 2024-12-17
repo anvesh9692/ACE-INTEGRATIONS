@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmFileOutput.msgnode="ComIbmFileOutput.msgnode" xmlns:ComIbmFileRead.msgnode="ComIbmFileRead.msgnode" xmlns:ComIbmWSInput.msgnode="ComIbmWSInput.msgnode" xmlns:ComIbmWSReply.msgnode="ComIbmWSReply.msgnode" xmlns:SF_Exception_Handling.subflow="SF_Exception_Handling.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow"
-    xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="MF_AB_BLOG_API_LOGIN_PAGE.msgflow" nsPrefix="MF_AB_BLOG_API_LOGIN_PAGE.msgflow">
+    xmlns:mbmonitor="http://www.ibm.com/wbi/2008/eflow_mbmonitor" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="MF_AB_BLOG_API_LOGIN_PAGE.msgflow" nsPrefix="MF_AB_BLOG_API_LOGIN_PAGE.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.File_Name" name="File_Name" defaultValueLiteral="AB_WebPage*">
@@ -21,18 +21,98 @@
     <composition>
       <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="121,170" URLSpecifier="/API/UserDetails/Validation" messageDomainProperty="XMLNSC" messageSetProperty="MS_USER_DTLS" validateTiming="immediate" validateMaster="contentAndValue" validateFailureAction="exceptionList" securityProfileName="NULL">
         <translation xmi:type="utility:ConstantString" string="Validation Request"/>
+        <monitorEvents eventSourceDescription="Transaction start" eventSourceName="Validation Request.transaction.Start" eventIdentity="Validation Request.TransactionStart">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator dataLocation="$Root/XMLNSC/Req_User_Dtls/Username" eventCorrelation="dataLocation"/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Validation Request.TransactionStart"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
+        <monitorEvents eventSourceDescription="Failure terminal" eventSourceName="Validation Request.terminal.failure" eventIdentity="Validation Request.FailureTerminal">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Validation Request.FailureTerminal"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
+        <monitorEvents eventSourceDescription="Catch terminal" eventSourceName="Validation Request.terminal.catch" eventIdentity="Validation Request.CatchTerminal">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Validation Request.CatchTerminal"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
       </nodes>
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="894,39">
         <translation xmi:type="utility:ConstantString" string="Validation Response"/>
+        <monitorEvents eventSourceDescription="In terminal" eventSourceName="Validation Response.terminal.in" eventIdentity="Validation Response.InTerminal">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator dataLocation="$Environment/File_Name" eventCorrelation="dataLocation"/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Validation Response.InTerminal"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="369,166" dataSource="ACE12DB" computeExpression="esql://routine/#MF_AB_BLOG_API_LOGIN_PAGE.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="User Validation"/>
       </nodes>
       <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="114,374" URLSpecifier="/API/UserDetails/Creation" messageDomainProperty="XMLNSC" messageSetProperty="MS_USER_DTLS" validateTiming="immediate" validateMaster="contentAndValue" validateFailureAction="exceptionList" securityProfileName="NULL">
         <translation xmi:type="utility:ConstantString" string="Creation Request"/>
+        <monitorEvents eventSourceDescription="Transaction start" eventSourceName="Creation Request.transaction.Start" eventIdentity="Creation Request.TransactionStart">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator dataLocation="$Root/XMLNSC/Req_User_Dtls/Dob" eventCorrelation="dataLocation"/>
+            <parentTransactionCorrelator dataLocation="$Root/XMLNSC/Req_User_Dtls/Username" eventCorrelation="dataLocation"/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Creation Request.TransactionStart"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
+        <monitorEvents eventSourceDescription="Failure terminal" eventSourceName="Creation Request.terminal.failure" eventIdentity="Creation Request.FailureTerminal">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Creation Request.FailureTerminal"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
+        <monitorEvents eventSourceDescription="Catch terminal" eventSourceName="Creation Request.terminal.catch" eventIdentity="Creation Request.CatchTerminal">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Creation Request.CatchTerminal"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
       </nodes>
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="692,370">
         <translation xmi:type="utility:ConstantString" string="Creation Response"/>
+        <monitorEvents eventSourceDescription="In terminal" eventSourceName="Creation Response.terminal.in" eventIdentity="Creation Response.InTerminal">
+          <eventXMLDoc xmi:type="mbmonitor:MonitorEvent">
+            <globalTransactionCorrelator/>
+            <parentTransactionCorrelator/>
+            <localTransactionCorrelator/>
+            <bitStreamData encoding="base64Binary"/>
+            <eventName literal="Creation Response.InTerminal"/>
+            <eventFilter dataLocation="true()" isXPath="true"/>
+          </eventXMLDoc>
+        </monitorEvents>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="405,371" dataSource="ACE12DB" computeExpression="esql://routine/#MF_AB_BLOG_API_USER_CREATION_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="User Creation"/>
