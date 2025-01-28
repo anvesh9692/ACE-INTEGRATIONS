@@ -1,5 +1,5 @@
 @echo off
-::set LOGFILE=C:\Anvesh\Work\ACE12\batch.log
+::set LOGFILE=C:\Anvesh\Work\ACE13\batch.log
 ::call :LOG > %LOGFILE%
 ::exit /B
 
